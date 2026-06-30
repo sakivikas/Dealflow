@@ -19,7 +19,7 @@ app.use(routes);
 if (process.env.NODE_ENV === "production") {
   const distPath = join(__dirname, "..", "dist");
   app.use(express.static(distPath));
-  app.get("*", (req, res) => res.sendFile(join(distPath, "index.html")));
+  app.get("(.*)", (req, res) => res.sendFile(join(distPath, "index.html")));
 }
 
 const HOST = process.env.NODE_ENV === "production" ? "0.0.0.0" : "127.0.0.1";
